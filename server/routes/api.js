@@ -2,20 +2,16 @@ const express = require("express");
 const router = express.Router();
 const Program = require("../models/Program");
 
-router.get("/city/:city", (req, res) => {});
-
-router.get("/get", (req, res) => {
-  Item.find({}, function (err, data) {
-    console.log(data);
-    res.send(data);
-  });
+router.get("/program/:program", (req, res) => {
+  let program = req.body;
+  console.log(program);
 });
 
-router.get("/item", (req, res) => []);
 router.post("/save", (req, res) => {
-  let data = req.body;
-  let newItem = new Item(data);
-  newItem.save();
+  let program = req.body;
+  let newProgram = new Program(program);
+  newProgram.save();
+  res.end();
 });
 
 module.exports = router;
