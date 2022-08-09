@@ -1,8 +1,7 @@
-
 const express = require("express");
 const router = express.Router();
-const moment = require('moment')
-const Program = require('../models/Program')
+const moment = require("moment");
+const Program = require("../models/Program");
 const Company = require("../models/Companies");
 const Comment = require("../models/Comments");
 
@@ -34,81 +33,22 @@ router.get("/companies", (req, res) => {
 });
 
 router.post("/company", (req, res) => {
-  let newCompany = new Company(program);
-  newCompany.save();
-  res.end();
+  let company = req.body;
+  // console.log(company);
+  let newCompany = new Company(company);
+  console.log(newCompany);
+  // newCompany.save();
+  res.send(newCompany);
 });
-
-
-
-router.get('/program/:programName', (req, res) => {
-    let programName = req.params.programName
-
-    Program.findOne({name: programName}, function(err, program){
-        res.send(program)
-    })  
-})
-
-router.get('/getPrograms', (req, res) => {
-    Program.find({}, function(err, programs) {
-        res.send(programs)
-    })
+router.put("/company/:companyName", (req, res) => {
+  let companyName = req.params.companyName;
+  Company.findOneAndUpdate({ name: companyName }, {});
 });
-
-router.post('/saveProgram', (req, res) => {
-    let program = req.body
-    let newProgram = new Program(program)
-    newProgram.save()
-    res.send(newProgram)  
-})
-
-router.put('/updateProgram/:programName', function(req, res){
-    let programName = req.params.programName
-    let newProgram = req.body
-    try{
-        Program.findOneAndUpdate(
-            {name: programName},
-            {
-                name: newProgram.name,
-                price: newProgram.price,
-                deadlineSubmit: newProgram.deadlineSubmit,
-                startDate: newProgram.startDate,
-                endDate: newProgram.endDate,
-                description: newProgram.description,
-                filters: newProgram.filters
-            }, {
-                new: true
-            },
-                function(err, program){
-                res.send(program)
-        })
-    }
-
-    catch(error){
-        res.status(404).send({error: "the program does not exist"})
-    }
-    
-   
-})
-
-router.delete('/deleteProgram/:programName', function(req, res){
-    let programName = req.params.programName
-    Program.findOneAndDelete({name: programName}, function(err, program){
-        res.send(program)
-    })
-   
-})
-
-router.post("/comment", function (req, res) {
-  // console.log(req.body.coment);
-   const comment = req.body;
-   //console.log(comment);
-   const c = new Comment({
-     comment :comment.coment
-   });
-   c.save();
-   res.end();
- });
-
-module.exports = router
-
+router.delete("/company/:companyName", (req, res) => {
+  let companyName = req.params.companyName;
+  console.log(companyName);
+  Company.findOneAndDelete({ name: companyName }, function (err, company) {
+    res.send(company);
+  });
+});
+module.exports = router;
