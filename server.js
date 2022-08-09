@@ -1,25 +1,27 @@
-const express = require('express')
-const path = require('path')
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const api = require('./server/routes/api')
+const express = require("express");
+const path = require("path");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const api = require("./server/routes/api");
+
+mongoose.connect("mongodb://localhost/bit-academy-db", {
+  useNewUrlParser: true,
+});
 
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bit-academy-db', { useNewUrlParser: true })
-
-const app = express()
-
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-
-app.use(express.static(path.join(__dirname, 'dist')))
-app.use(express.static(path.join(__dirname, 'node_modules')))
+const app = express();
 
 
-app.use('/', api)
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-const port = 8888
+app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "node_modules")));
 
-app.listen(process.env.PORT || port, function() {
-    console.log(`Runnin runnin and runnin runnin on port ${port}`)
-})
+app.use("/", api);
+
+const port = 8888;
+
+app.listen(process.env.PORT || port, function () {
+  console.log(`Runnin runnin and runnin runnin on port ${port}`);
+});
