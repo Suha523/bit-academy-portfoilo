@@ -23,11 +23,25 @@ class DataModel {
   };
   getCompanies = () => {
     $.get("/companies", function (companies) {
-      console.log(companiess);
       this.companies = companiess;
     });
   };
-  updateCompany = () => {
-    $.ajax();
+  updateCompany = (companyName) => {
+    $.ajax({
+      url: "/company/:" + companyName,
+      type: "PUT",
+      success: function (data) {
+        $("#para").html(data);
+      },
+    });
+  };
+  deleteCompany = (companyName) => {
+    $.ajax({
+      url: "/company/:" + companyName,
+      type: "DELETE",
+      success: function (data) {
+        console.log("delete company" + data.companyName);
+      },
+    });
   };
 }

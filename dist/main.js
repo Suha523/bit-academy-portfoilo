@@ -14,7 +14,9 @@ $("#messageSubmit").on("click", function () {
   dataModel.saveMessage();
 });
 
-let saveCompany = $("#save-comany");
+let saveCompany = $("#save-company");
+let updateCompany = $("update-company");
+let deleteCompany = $("#delete-company");
 saveCompany.on("click", function (e) {
   e.preventDefault();
   let companyName = $("#companyName").val();
@@ -26,3 +28,4 @@ saveCompany.on("click", function (e) {
     description: descriptionCompany,
   });
 });
+updateCompany.on("click", function () {});
