@@ -24,6 +24,10 @@ router.post('/save', (req, res) => {
     res.end()  
 })
 
-router.put('/update/:programName')
+router.put('/update/:programName', function(res, req){
+    let programName = req.params.programName
+    console.log(programName);
+    res.end()
+})
 
 module.exports = router
