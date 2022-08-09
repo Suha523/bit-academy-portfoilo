@@ -103,5 +103,14 @@ router.post('/saveApplication', function(req, res){
     res.send(newApplication)
 })
 
+router.get('/getApplications', function(req, res){
+    Application.find({}).populate('program').exec(function(err, applications){
+        for(let application of applications){
+            res.send(application);
+        }
+       
+    })
+})
+
 module.exports = router
 
