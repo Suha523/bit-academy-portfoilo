@@ -1,9 +1,9 @@
-
 const express = require("express");
 const router = express.Router();
 const moment = require('moment')
 const Program = require('../models/Program')
-const Company = require("../models/Companies");
+const Company = require("../models/Companies")
+const Application = require('../models/Application')
 
 router.get("/program/:programName", (req, res) => {
   let programName = req.params.programName;
@@ -86,8 +86,6 @@ router.put('/updateProgram/:programName', function(req, res){
     catch(error){
         res.status(404).send({error: "the program does not exist"})
     }
-    
-   
 })
 
 router.delete('/deleteProgram/:programName', function(req, res){
@@ -95,7 +93,14 @@ router.delete('/deleteProgram/:programName', function(req, res){
     Program.findOneAndDelete({name: programName}, function(err, program){
         res.send(program)
     })
-   
+})
+
+
+router.post('/saveApplication', function(req, res){
+    let application = req.body
+    let newApplication = new Application(application)
+    newApplication.save()
+    res.send(newApplication)
 })
 
 module.exports = router
