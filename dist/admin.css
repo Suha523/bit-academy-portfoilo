@@ -1,0 +1,31 @@
+.comanpy-form{
+    width: 98%;
+    margin: auto;
+    padding: 10px;
+    overflow: hidden;
+    border: 1px solid red;
+}
+.subtitile-companyform{
+    text-align: center;
+    font-size: 40px;
+}
+label{
+    margin: 10px 0;
+    display: block;
+}
+.comanpy-form input{
+    width: 98%;
+    padding: 8px;
+    display: block;
+    margin: auto;
+}
+.comanpy-form #descriptionCompany{
+    width: 99%;
+    height: 100px;
+}
+#save-comany{
+    display: block;
+    margin: 40px auto 0;
+    padding: 10px;
+    width: 20%
+}

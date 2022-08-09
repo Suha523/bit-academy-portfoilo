@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <form class="comanpy-form">
+        <h2 class="subtitile-companyform">Add New Company !</h2>
+       <div>
+            <label for="companyName">company Name </label>
+            <input type="text" id="companyName" />
+       </div>
+       <div>
+            <label for="imageComapny">Image Link </label>
+            <input type="text" id="imageComapny" />
+        </div>
+        <div>
+            <label for="descriptionCompany">description</label>
+            <textarea type="text" id="descriptionCompany" ></textarea>
+        </div>
+        <button id="save-comany" >Save</button>
+    </form>
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="DataModel.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -31,9 +31,22 @@ router.get("/companies", (req, res) => {
 });
 
 router.post("/company", (req, res) => {
-  let newCompany = new Company(program);
-  newCompany.save();
-  res.end();
+  let company = req.body;
+  // console.log(company);
+  let newCompany = new Company(company);
+  console.log(newCompany);
+  // newCompany.save();
+  res.send(newCompany);
 });
-
+router.put("/company/:companyName", (req, res) => {
+  let companyName = req.params.companyName;
+  Company.findOneAndUpdate({ name: companyName }, {});
+});
+router.delete("/company/:companyName", (req, res) => {
+  let companyName = req.params.companyName;
+  console.log(companyName);
+  Company.findOneAndDelete({ name: companyName }, function (err, company) {
+    res.send(company);
+  });
+});
 module.exports = router;
