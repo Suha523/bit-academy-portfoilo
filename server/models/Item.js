@@ -1,10 +1,19 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const validator = require("validator");
+const Schema = mongoose.Schema;
+const contactUsSchema = new Schema({
+  name: String,
+  email: {
+    type: String,
+    validate: {
+      validator: function (value) {
+        return value === "correct@example.com";
+      },
+      message: "Invalid email.",
+    },
+  },
+  message: String,
+});
 
-const itemSchema = new Schema({
-    name: String,
-    updatedAt: Date
-})
-
-const Item = mongoose.model("Item", itemSchema)
-module.exports = Item
+const message = mongoose.model("message", contactUsSchema);
+module.exports = message;
