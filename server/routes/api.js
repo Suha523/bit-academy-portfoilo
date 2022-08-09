@@ -51,4 +51,6 @@ router.delete("/company/:companyName", (req, res) => {
     res.send(company);
   });
 });
+
+
 module.exports = router;
