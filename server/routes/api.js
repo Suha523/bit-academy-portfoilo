@@ -4,6 +4,7 @@ const router = express.Router();
 const moment = require('moment')
 const Program = require('../models/Program')
 const Company = require("../models/Companies");
+const Comment = require("../models/Comments");
 
 router.get("/program/:programName", (req, res) => {
   let programName = req.params.programName;
@@ -97,6 +98,17 @@ router.delete('/deleteProgram/:programName', function(req, res){
     })
    
 })
+
+router.post("/comment", function (req, res) {
+  // console.log(req.body.coment);
+   const comment = req.body;
+   //console.log(comment);
+   const c = new Comment({
+     comment :comment.coment
+   });
+   c.save();
+   res.end();
+ });
 
 module.exports = router
 
