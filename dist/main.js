@@ -1,3 +1,4 @@
+
 const dataModel = new DataModel()
 const renderer = new Renderer()
 const saveComment = function () {
@@ -9,3 +10,8 @@ const saveComment = function () {
     saveComment();
     $("#comment-input").val("");
   });
+
+$("#messageSubmit").on("click", function () {
+  dataModel.saveMessage();
+});
+
