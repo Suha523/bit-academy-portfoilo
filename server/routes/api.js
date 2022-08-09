@@ -58,7 +58,7 @@ router.post('/saveProgram', (req, res) => {
     let program = req.body
     let newProgram = new Program(program)
     newProgram.save()
-    res.end()  
+    res.send(newProgram)  
 })
 
 router.put('/updateProgram/:programName', function(req, res){
@@ -84,14 +84,19 @@ router.put('/updateProgram/:programName', function(req, res){
     }
 
     catch(error){
-        console.log("the program does not exist");
         res.status(404).send({error: "the program does not exist"})
     }
     
    
 })
 
-
+router.delete('/deleteProgram/:programName', function(req, res){
+    let programName = req.params.programName
+    Program.findOneAndDelete({name: programName}, function(err, program){
+        res.send(program)
+    })
+   
+})
 
 module.exports = router
 
