@@ -1,22 +1,17 @@
-const express = require('express')
-const router = express.Router()
-const Item = require('../models/Item')
+const express = require("express");
+const router = express.Router();
+const Comment = require("../models/Comments");
 
-
-router.get('/city/:city', (req, res) => {
-})
-
-router.get('/get', (req, res) => {
-    Item.find({}, function(err, data) {
-        console.log(data)
-        res.send(data)
-    })
+router.post("/comment", function (req, res) {
+ // console.log(req.body.coment);
+  const comment = req.body;
+  //console.log(comment);
+  const c = new Comment({
+    comment :comment.coment
+  });
+  c.save();
+  res.end();
 });
 
-router.post('/save', (req, res) => {
-    let data = req.body
-    let newItem = new Item(data)
-    newItem.save()
-})
 
-module.exports = router
+module.exports = router;
