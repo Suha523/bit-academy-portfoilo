@@ -1,72 +1,69 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3vmax;
+/* afnan edit css */
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: grey;
+  height: auto;
+  width: 100vw;
+  padding-top: 20px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
 }
-
-body{
-    background-image: linear-gradient(#3498db, #2980b9);
-    background-attachment: fixed;
+.footercontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
-
-.input{
-    padding: 1vmax;
-
-    background-color: #3498db;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.footercontainer h3 {
+  font-size: 1.8rem;
+  font-weight: 400px;
+  text-transform: capitalize;
+  line-height: 3rem;
 }
-
-.results{
-    padding: 1vmax;
-    /* margin: 1vmax; */
-    color: #ecf0f1;
+.footercontainer p {
+  max-width: 500px;
+  margin: 10px auto;
+  font-size: 14px;
 }
-
-input{
-    color: #ecf0f1;
-    font-family: inherit;    
-    border: none;
-    border-bottom: 0.5px solid #ecf0f1;
-    background: none;
-    font-size: 1em;
-    align-self: center;
+.socials {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
-
-input:focus{
-    outline: none;
+.socials li {
+  margin: 0 10px;
 }
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #ecf0f1;
-    opacity: 1; /* Firefox */
-  }
-
-  .fa-search{
-    color: #ecf0f1;
-    cursor: pointer;
-    padding-left: 5vmax;
-  }
-
-  .results{
-      display: grid;
-    grid-gap: 2vmax;
-  }
-
-  .entry{
-      display: grid;
-      grid-template-areas: 
-      "s t i"
-      "s n c";
-      grid-template-columns: 1fr 8fr 8fr;
-      box-shadow: 1px 1px 3px #2980b9;
-  }
-
-.temp{grid-area: t; justify-self: center; font-size: 7vmax;}
-.city{grid-area: n; justify-self: center;}
-.entry>img{grid-area: i; justify-self: center;}
-.condition{grid-area: c; justify-self: center;}
-.toggle{grid-area: s; align-self: center; justify-self: center; color: #2c3e50;}
-.remove{color: #902D41;}
-.save{color: #404E4D;}
+.socials a {
+  text-decoration: none;
+  color: slateblue;
+}
+.socials a i {
+  font-size: 3.1rem;
+  transition: color 0.4s;
+}
+.socials a:hover i {
+  color: lightseagreen;
+}
+.footerbtm {
+  background: grey;
+  width: 100vw;
+  padding: 20px 0;
+  text-align: center;
+}
+.footerbtm p {
+  font-size: 20 px;
+  word-spacing: 2px;
+  text-transform: capitalize;
+  text-align: center;
+}
+.footerbtm span {
+  text-transform: uppercase;
+  font-weight: 200;
+}
