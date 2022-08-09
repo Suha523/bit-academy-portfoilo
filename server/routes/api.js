@@ -3,9 +3,13 @@ const router = express.Router()
 const Program = require('../models/Program')
 
 
-router.get('/program/:program', (req, res) => {
-    let program = req.body
-    console.log(program);
+router.get('/program/:programName', (req, res) => {
+    let programName = req.params.programName
+
+    Program.findOne({name: programName}, function(err, program){
+        res.send(program)
+    })  
+
 })
 
 // router.get('/get', (req, res) => {
