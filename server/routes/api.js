@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const moment = require('moment')
 const Program = require('../models/Program')
-
 
 router.get('/program/:programName', (req, res) => {
     let programName = req.params.programName
@@ -11,23 +11,32 @@ router.get('/program/:programName', (req, res) => {
     })  
 })
 
-router.get('/get', (req, res) => {
-    Program.find({}, function(err, programms) {
-        res.send(programms)
+router.get('/getPrograms', (req, res) => {
+    Program.find({}, function(err, programs) {
+        res.send(programs)
     })
 });
 
-router.post('/save', (req, res) => {
+router.post('/saveProgram', (req, res) => {
     let program = req.body
     let newProgram = new Program(program)
     newProgram.save()
     res.end()  
 })
 
-router.put('/update/:programName', function(res, req){
-    let programName = req.params.programName
-    console.log(programName);
-    res.end()
+router.put('/updateProgram', function(req, res){
+    //let programName = req.params.programName
+    // Program.findByIdAndUpdate(
+    //     {name: programName},
+    //     {
+    //         name: String,
+    //         price: Number,
+    //         isOpen: Boolean,
+    //         description: String
+    //     }, function(err, program){
+          
+    // })
+    // res.send(programName)
 })
 
 module.exports = router
