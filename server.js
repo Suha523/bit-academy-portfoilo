@@ -8,7 +8,9 @@ mongoose.connect("mongodb://localhost/bit-academy-db", {
   useNewUrlParser: true,
 });
 
+
 const app = express();
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
