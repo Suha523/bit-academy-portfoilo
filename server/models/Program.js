@@ -9,5 +9,5 @@ const ProgramSchema = new Schema({
     description: String
 })
 
-const Programm = mongoose.model("Programm", ProgramSchema)
-module.exports = Programm
+const Program = mongoose.model("Program", ProgramSchema)
+module.exports = Program

@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Item = require('../models/Programm')
+const Program = require('../models/Program')
+
 
 
 // router.get('/city/:city', (req, res) => {
