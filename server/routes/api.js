@@ -13,5 +13,12 @@ router.post("/save", (req, res) => {
   newProgram.save();
   res.end();
 });
+router.get("/program/:programName", (req, res) => {
+  let programName = req.params.programName;
+
+  Program.findOne({ name: programName }, function (err, program) {
+    res.send(program);
+  });
+});
 
 module.exports = router;
