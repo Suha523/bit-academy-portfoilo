@@ -61,19 +61,34 @@ router.post('/saveProgram', (req, res) => {
     res.end()  
 })
 
-router.put('/updateProgram', function(req, res){
-    //let programName = req.params.programName
-    // Program.findByIdAndUpdate(
-    //     {name: programName},
-    //     {
-    //         name: String,
-    //         price: Number,
-    //         isOpen: Boolean,
-    //         description: String
-    //     }, function(err, program){
-          
-    // })
-    // res.send(programName)
+router.put('/updateProgram/:programName', function(req, res){
+    let programName = req.params.programName
+    let newProgram = req.body
+    try{
+        Program.findOneAndUpdate(
+            {name: programName},
+            {
+                name: newProgram.name,
+                price: newProgram.price,
+                deadlineSubmit: newProgram.deadlineSubmit,
+                startDate: newProgram.startDate,
+                endDate: newProgram.endDate,
+                description: newProgram.description,
+                filters: newProgram.filters
+            }, {
+                new: true
+            },
+                function(err, program){
+                res.send(program)
+        })
+    }
+
+    catch(error){
+        console.log("the program does not exist");
+        res.status(404).send({error: "the program does not exist"})
+    }
+    
+   
 })
 
 module.exports = router
