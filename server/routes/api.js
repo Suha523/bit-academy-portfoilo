@@ -9,15 +9,13 @@ router.get('/program/:programName', (req, res) => {
     Program.findOne({name: programName}, function(err, program){
         res.send(program)
     })  
-
 })
 
-// router.get('/get', (req, res) => {
-//     Item.find({}, function(err, data) {
-//         console.log(data)
-//         res.send(data)
-//     })
-// });
+router.get('/get', (req, res) => {
+    Program.find({}, function(err, programms) {
+        res.send(programms)
+    })
+});
 
 router.post('/save', (req, res) => {
     let program = req.body
