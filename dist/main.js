@@ -1,27 +1,18 @@
 const dataModel = new DataModel();
 const renderer = new Renderer();
 let saveCompany = $("#save-comany");
-
-const saveComment = function () {
-  const comment = $("#comment-input").val();
-  console.log(comment);
-  $.post("/comment", { coment: comment }, function (response) {});
-};
-
 $("#comment-subment").on("click", function () {
   dataModel.saveComment();
   $("#comment-input").val("");
 });
 
-const loadPage = function () {
+const loadComent = function () {
   dataModel.getCommentFromDB().then(function () {
     renderer.renderComment(dataModel.comment);
   });
 };
 
-window.onload = function () {
-  loadPage();
-};
+loadComent();
 
 $("#messageSubmit").on("click", function () {
   dataModel.saveMessage();
