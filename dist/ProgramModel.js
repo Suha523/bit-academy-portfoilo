@@ -2,12 +2,11 @@ class ProgramManager {
   constructor() {}
 
   addProgram(program) {
-    $.ajax({
+    return $.ajax({
       method: "post",
       url: "/saveProgram",
       data: program,
       success: (response) => {
-        console.log(response);
       },
       error: function (error) {
         console.log(error);
@@ -56,14 +55,12 @@ class ProgramManager {
   }
 
   getAllPrograms() {
-    $.ajax({
+    return $.ajax({
       method: "get",
       url: "/programs",
       success: function (response) {
-        console.log(response);
       },
       error: function (error) {
-        console.log(error);
       },
     });
   }

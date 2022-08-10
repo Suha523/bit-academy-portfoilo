@@ -1,5 +1,7 @@
-const dataModel = new DataModel();
 const renderer = new Renderer();
+const programManager = new ProgramManager();
+const dataModel = new DataModel();
+
 let saveCompany = $("#save-comany");
 
 const saveComment = function () {
@@ -13,15 +15,13 @@ $("#comment-subment").on("click", function () {
   $("#comment-input").val("");
 });
 
-const loadPage = function () {
+const loadComent = function () {
   dataModel.getCommentFromDB().then(function () {
     renderer.renderComment(dataModel.comment);
   });
 };
 
-window.onload = function () {
-  loadPage();
-};
+loadComent();
 
 $("#messageSubmit").on("click", function () {
   dataModel.saveMessage();
@@ -68,3 +68,12 @@ function loadCompanies() {
   });
 }
 loadCompanies();
+
+const renderPrograms = function () {
+  let programPromise = programManager.getAllPrograms();
+  programPromise.then(function (programs) {
+    renderer.renderProgramsUsers(programs);
+  });
+};
+
+renderPrograms();
