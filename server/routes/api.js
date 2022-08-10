@@ -13,7 +13,7 @@ router.get("/program/:programId", (req, res) => {
   });
 });
 
-router.get("/get", (req, res) => {
+router.get("/programs", (req, res) => {
   Program.find({}, function (err, programms) {
     res.send(programms);
   });
