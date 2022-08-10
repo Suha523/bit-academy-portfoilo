@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Bit Academy</title>
+    <title>WhetherWeather</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat"
@@ -17,7 +17,6 @@
     />
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
   </head>
-
   <body>
     <nav class="nav">
       <div class="logo">
@@ -25,20 +24,14 @@
       </div>
       <ul class="list-container">
         <li class="list-item"><a href="index.html">home</a></li>
-        <li class="list-item">aboutus</li>
+        <li class="list-item">arbutus</li>
         <li class="list-item">programs</li>
         <li class="list-item"><a href="contactus.html">contact us</a></li>
         <li class="list-item">what the other says</li>
-
-        <li class="list-item"><a href="admin.html">login</a></li>
+        <li class="list-item">login</li>
       </ul>
     </nav>
-
-    <div id="main-comment">
-      <textarea id="comment-input" placeholder="Enter your comment"></textarea>
-      <button id="comment-subment">submet</button>
-    </div>
-
+    <div class="about-us">my name is bitAcademy</div>
     <footer>
       <div class="footer_container">
         <p>contact us</p>
@@ -66,10 +59,25 @@
         <p>BIT-Academy &copy;2020 with allreservation</p>
       </div>
     </footer>
+    <div>
+      <h1>Contact us</h1>
+      <label>
+        name:<input id="nameinput" type="text" name="clientname" required
+      /></label>
+      <br />
+      <label
+        >email:<input id="email" type="text" name="clientemail" required
+      /></label>
+      <br />
+      <label
+        >message:<br /><textarea name="comment" id="message"></textarea>
+      </label>
+      <br />
+      <button id="messageSubmit">submit</button>
+    </div>
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="DataModel.js"></script>
-    <script src="ProgramModel.js"></script>
     <script src="Renderer.js"></script>
     <script src="main.js"></script>
   </body>

@@ -29,3 +29,26 @@ label{
     padding: 10px;
     width: 20%
 }
+.companies-container{
+    margin: 100px 0;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: space-between;
+    justify-content: space-evenly;
+    border: 1px solid green;
+    padding: 10px;
+}
+.company-container{
+    margin:40px;
+}
+.company-img-container{
+    width: 100%;
+    height: 200px;
+    margin: auto;
+}
+.company-img-container > img{
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}

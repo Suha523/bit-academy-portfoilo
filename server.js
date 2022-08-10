@@ -4,13 +4,11 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const api = require("./server/routes/api");
 
-mongoose.connect("mongodb://localhost/bit-academy-db", {
+const db = mongoose.connect("mongodb://localhost/bit-academy-db", {
   useNewUrlParser: true,
 });
 
-
 const app = express();
-
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
