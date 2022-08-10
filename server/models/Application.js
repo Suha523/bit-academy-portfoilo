@@ -7,10 +7,12 @@ const ApplicationSchema = new Schema({
     address: String,
     phone: Number,
     university: String,
-    gpa: String,
+    gpa: Number,
     program: {type: Schema.Types.ObjectId, ref: 'Program'},
     english_level: String,
 })
+
+
 
 const Application = mongoose.model("Application", ApplicationSchema)
 module.exports = Application

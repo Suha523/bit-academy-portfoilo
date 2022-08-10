@@ -125,5 +125,13 @@ router.delete("/deleteProgram/:programId", function (req, res) {
   });
 });
 
+router.post('/saveApplication', function(req, res){
+  let application = req.body
+  let newApplication = new Application(application)
+  newApplication.save()
+  res.send(newApplication)
+})
+
+
 
 module.exports = router;
