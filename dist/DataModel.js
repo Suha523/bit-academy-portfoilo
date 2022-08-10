@@ -1,6 +1,40 @@
 class DataModel {
   constructor() {
     this.companies = [];
+    this.comment = [];
+    this.allComment = [];
+  }
+
+  saveComment() {
+    const comment = $("#comment-input").val();
+    $.post("/comment", { coment: comment }, function (response) {});
+  }
+
+  async getCommentFromDB() {
+    let arrayComment = [];
+    await $.get("/comments", function (comment) {
+      console.log(comment);
+      comment.forEach((c) =>
+        arrayComment.push({
+          comment: c.comment,
+        })
+      );
+    });
+    this.comment = arrayComment;
+    console.log(this.comment);
+  }
+
+  async getAllComment() {
+    let arrayComment = [];
+    await $.get("/comment", function (comment) {
+      comment.forEach((c) =>
+        arrayComment.push({
+          comment: c.comment,
+        })
+      );
+    });
+    this.allComment = arrayComment;
+    console.log(this.allComment);
   }
 
   saveMessage() {
@@ -22,9 +56,7 @@ class DataModel {
     });
   };
   getCompanies = () => {
-    $.get("/companies", function (companies) {
-      this.companies = companiess;
-    });
+    return $.get("/companies");
   };
   updateCompany = (companyName) => {
     $.ajax({

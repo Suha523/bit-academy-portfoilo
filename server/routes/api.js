@@ -25,6 +25,7 @@ router.get("/programs", (req, res) => {
 });
 router.get("/companies", (req, res) => {
   Company.find({}, function (err, companies) {
+    if (companies === null) companies = [];
     res.send(companies);
   });
 });
@@ -32,7 +33,6 @@ router.get("/companies", (req, res) => {
 router.post("/company", (req, res) => {
   let company = req.body;
   let newCompany = new Company(company);
-  console.log(newCompany);
   newCompany.save();
   res.send(newCompany);
 });
@@ -61,15 +61,24 @@ router.post("/saveProgram", (req, res) => {
 });
 
 router.post("/comment", function (req, res) {
-  // console.log(req.body.coment);
   const comment = req.body;
-  //console.log(comment);
   const c = new Comment({
     comment: comment.coment,
   });
   c.save();
   res.end();
 });
+
+router.get("/comments", function (req, res) {
+  let retriveComments = [];
+  Comment.find({}, function (err, comments) {
+    retriveComments = comments;
+    let newarray = retriveComments.slice(-5);
+    res.send(newarray);
+    res.end();
+  });
+});
+
 router.post("/postcontact", (req, res) => {
   let message = { ...req.body };
   console.log(message);
@@ -84,6 +93,21 @@ router.delete("/company/:companyName", (req, res) => {
   Company.findOneAndDelete({ name: companyName }, function (err, company) {
     res.send(company);
   });
+});
+
+
+router.delete("/deleteProgram/:programId", function (req, res) {
+  let programId = req.params.programId;
+  Program.findByIdAndDelete(programId, function (err, program) {
+    res.send(program);
+  });
+});
+
+router.post("/saveProgram", (req, res) => {
+  let program = req.body;
+  let newProgram = new Program(program);
+  newProgram.save();
+  res.send(newProgram);
 });
 
 router.put("/updateProgram/:programId", function (req, res) {
@@ -119,13 +143,45 @@ router.delete("/deleteProgram/:programId", function (req, res) {
     res.send(program);
   });
 });
+
+router.post("/comment", function (req, res) {
+  const comment = req.body;
+  const c = new Comment({
+    comment: comment.coment,
+  });
+  c.save();
+  res.end();
+});
+
+router.get("/comments", function (req, res) {
+  let retriveComments = [];
+  Comment.find({}, function (err, comments) {
+    retriveComments = comments;
+    let newarray = retriveComments.slice(-5);
+    res.send(newarray);
+    res.end();
+  });
+});
+
+router.post("/saveApplication", function (req, res) {
+  let application = req.body;
+  Program.findById(application.program, function (err, program) {
+    if (
+      program.filters.length == 0 ||
+      program.filters[0].EnglishLevel === application.english_level ||
+      program.filters[1].gpa <= application.gpa
+    ) {
+      application.isAccept = true;
+    }
+    let newApplication = new Application(application);
+    newApplication.save();
+    res.send(newApplication);
+  });
+});
 router.post("/login", function (req, res) {
-  // // req.bogy // [ user , pass] req.body .username //req.body .apss
-  // admins.findOne({user :user }) /// obj = { user:anas , passsword  : 123 }
   let loginadmin = req.body;
   let userName = loginadmin.userName;
   let password = loginadmin.password;
-  //   console.log(loginadmin);
   admins.findOne(
     { userName: userName, password: password },
     function (err, admin) {
@@ -146,6 +202,28 @@ router.post("/register", function (req, res) {
   console.log(admin);
   newAdmin.save();
   res.end();
+});
+
+router.get("/applications", function (req, res) {
+  Application.find({})
+    .populate("program")
+    .exec(function (err, applications) {
+      res.send(applications);
+    });
+});
+
+router.get("/getAccepted", function (req, res) {
+  Application.find({ isAccept: true }, function (err, applications) {
+    console.log(applications);
+    res.end();
+  });
+});
+
+router.delete("/deleteApplication/:applicationId", function (req, res) {
+  let applicationId = req.params.applicationId;
+  Application.findByIdAndDelete(applicationId, function (err, application) {
+    res.send(application);
+  });
 });
 
 module.exports = router;
