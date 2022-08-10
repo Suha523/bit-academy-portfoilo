@@ -74,7 +74,7 @@ router.get("/comments", function (req, res) {
   Comment.find({}, function (err, comments) {
     retriveComments = comments;
     let newarray = retriveComments.slice(-5);
-  res.send(newarray);
+    res.send(newarray);
     res.end();
   });
 });
@@ -96,46 +96,12 @@ router.delete("/company/:companyName", (req, res) => {
 });
 
 
-router.post('/saveProgram', (req, res) => {
-    let program = req.body
-    let newProgram = new Program(program)
-    newProgram.save()
-    res.send(newProgram)  
-})
-
-router.put('/updateProgram/:programId', function(req, res){
-    let programId = req.params.programId
-    let newProgram = req.body
-    try{
-        Program.findByIdAndUpdate(
-          programId,
-            {
-                name: newProgram.name,
-                price: newProgram.price,
-                deadlineSubmit: newProgram.deadlineSubmit,
-                startDate: newProgram.startDate,
-                endDate: newProgram.endDate,
-                description: newProgram.description,
-                filters: newProgram.filters
-            }, {
-                new: true
-            },
-                function(err, program){
-                res.send(program)
-        })
-    }
-
-    catch(error){
-        res.status(404).send({error: "the program does not exist"})
-    }
-})
-
-router.delete('/deleteProgram/:programId', function(req, res){
-    let programId = req.params.programId
-    Program.findByIdAndDelete(programId, function(err, program){
-        res.send(program)
-    })
-})
+router.delete("/deleteProgram/:programId", function (req, res) {
+  let programId = req.params.programId;
+  Program.findByIdAndDelete(programId, function (err, program) {
+    res.send(program);
+  });
+});
 
 router.post("/saveProgram", (req, res) => {
   let program = req.body;
@@ -178,40 +144,44 @@ router.delete("/deleteProgram/:programId", function (req, res) {
   });
 });
 
-
 router.post("/comment", function (req, res) {
-   const comment = req.body;
-   const c = new Comment({
-     comment :comment.coment
-   });
-   c.save();
-   res.end();
- });
+  const comment = req.body;
+  const c = new Comment({
+    comment: comment.coment,
+  });
+  c.save();
+  res.end();
+});
 
- router.get("/comments", function (req, res) {
+router.get("/comments", function (req, res) {
   let retriveComments = [];
   Comment.find({}, function (err, comments) {
     retriveComments = comments;
     let newarray = retriveComments.slice(-5);
-  res.send(newarray);
+    res.send(newarray);
     res.end();
   });
 });
 
-router.post('/saveApplication', function(req, res){
-  let application = req.body
-  let newApplication = new Application(application)
-  newApplication.save()
-  res.send(newApplication)
-})
-
+router.post("/saveApplication", function (req, res) {
+  let application = req.body;
+  Program.findById(application.program, function (err, program) {
+    if (
+      program.filters.length == 0 ||
+      program.filters[0].EnglishLevel === application.english_level ||
+      program.filters[1].gpa <= application.gpa
+    ) {
+      application.isAccept = true;
+    }
+    let newApplication = new Application(application);
+    newApplication.save();
+    res.send(newApplication);
+  });
+});
 router.post("/login", function (req, res) {
-  // // req.bogy // [ user , pass] req.body .username //req.body .apss
-  // admins.findOne({user :user }) /// obj = { user:anas , passsword  : 123 }
   let loginadmin = req.body;
   let userName = loginadmin.userName;
   let password = loginadmin.password;
-  //   console.log(loginadmin);
   admins.findOne(
     { userName: userName, password: password },
     function (err, admin) {
@@ -234,5 +204,26 @@ router.post("/register", function (req, res) {
   res.end();
 });
 
+router.get("/applications", function (req, res) {
+  Application.find({})
+    .populate("program")
+    .exec(function (err, applications) {
+      res.send(applications);
+    });
+});
+
+router.get("/getAccepted", function (req, res) {
+  Application.find({ isAccept: true }, function (err, applications) {
+    console.log(applications);
+    res.end();
+  });
+});
+
+router.delete("/deleteApplication/:applicationId", function (req, res) {
+  let applicationId = req.params.applicationId;
+  Application.findByIdAndDelete(applicationId, function (err, application) {
+    res.send(application);
+  });
+});
 
 module.exports = router;
