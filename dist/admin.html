@@ -66,6 +66,17 @@
             </div>
         </div>
     </div>
+    <div>
+        <button id=""
+        <div id="display-comment-admin"></div>
+    </div>
+    <script type="text/x-handlebars-template" id="comment-admin-template">
+        {{#each comment}}
+      <div>
+        {{comment}}
+      </div>
+      {{/each}}
+    </script>
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="DataModel.js"></script>

@@ -8,7 +8,7 @@ const messages = require("../models/message");
 router.get("/program/:programName", (req, res) => {
   let programName = req.params.programName;
 
-  Program.findOne({'name': programName}, function (err, program) {
+  Program.findOne({ name: programName }, function (err, program) {
     res.send(program);
   });
 });
@@ -90,15 +90,24 @@ router.delete("/deleteProgram/:programName", function (req, res) {
 });
 
 router.post("/comment", function (req, res) {
-  // console.log(req.body.coment);
   const comment = req.body;
-  //console.log(comment);
   const c = new Comment({
     comment: comment.coment,
   });
   c.save();
   res.end();
 });
+
+router.get("/comments", function (req, res) {
+  let retriveComments = [];
+  Comment.find({}, function (err, comments) {
+    retriveComments = comments;
+    let newarray = retriveComments.slice(-5);
+  res.send(newarray);
+    res.end();
+  });
+});
+
 router.post("/postcontact", (req, res) => {
   let message = { ...req.body };
   console.log(message);
@@ -207,11 +216,14 @@ router.post("/comment", function (req, res) {
  });
 
  router.get("/comments", function (req, res) {
+  let retriveComments = [];
   Comment.find({}, function (err, comments) {
-    console.log(comments)
-    res.send(comments);
-  }).sort().limit(2)
-}); 
+    retriveComments = comments;
+    let newarray = retriveComments.slice(-5);
+  res.send(newarray);
+    res.end();
+  });
+});
 
 module.exports = router
 

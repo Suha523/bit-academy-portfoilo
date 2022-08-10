@@ -37,6 +37,7 @@
     <div id="main-comment">
       <textarea id="comment-input" placeholder="Enter your comment"></textarea>
       <button id="comment-subment">Add comments</button>
+      <div id="display-comment"></div>
     </div>
 
     <footer>
@@ -66,6 +67,14 @@
         <p>BIT-Academy &copy;2020 with allreservation</p>
       </div>
     </footer>
+
+    <script type="text/x-handlebars-template" id="comment-template">
+      {{#each comment}}
+      <div>
+        {{comment}}
+      </div>
+      {{/each}}
+    </script>
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="DataModel.js"></script>
