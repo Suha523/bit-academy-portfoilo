@@ -1,27 +1,27 @@
 :root {
-  --mainColor:#74B8B8;
-  --secondColor:#AACA59;
+  --mainColor: #74b8b8;
+  --secondColor: #aaca59;
 }
-.nav{
+.nav {
   display: flex;
   justify-content: space-between;
   background-color: var(--mainColor);
   color: white;
   height: 100px;
 }
-ul{
+ul {
   list-style: none;
 }
-.logo .img-logo{
+.logo .img-logo {
   height: 100%;
   width: 70px;
 }
-.list-container{
+.list-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.list-item{
+.list-item {
   display: inline-block;
   text-transform: capitalize;
   margin: 10px;
@@ -29,7 +29,7 @@ ul{
   padding: 5px;
   font-size: 18px;
 }
-.list-item:hover{
+.list-item:hover {
   background-color: var(--secondColor);
 }
 /* afnan edit css */
@@ -88,7 +88,7 @@ footer {
   text-align: center;
 }
 .footerbtm p {
-  font-size: 20 px;
+  font-size: 20px;
   word-spacing: 2px;
   text-transform: capitalize;
   text-align: center;
