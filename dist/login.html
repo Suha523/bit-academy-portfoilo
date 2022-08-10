@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>WhetherWeather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="login.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+
+    <script src="./jquery/dist/jquery.js" defer></script>
+    <script src="./handlebars/dist/handlebars.js" defer></script>
+    <script src="DataModel.js" defer></script>
+    <script src="Renderer.js" defer></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="logo">
+        <img src="./images/logo.jpg" class="img-logo" />
+      </div>
+      <ul class="list-container">
+        <li class="list-item"><a href="index.html">home</a></li>
+        <li class="list-item">aboutus</li>
+        <li class="list-item">programs</li>
+        <li class="list-item"><a href="contactus.html">contact us</a></li>
+        <li class="list-item">what the other says</li>
+        <li class="list-item"><a href="login.html">login</a></li>
+      </ul>
+    </nav>
+    <form class="box">
+      <h1>login</h1>
+      <input type="text" name="" placeholder="Enter Username" id="username" />
+      <input
+        type="password"
+        name=""
+        placeholder="Enter password"
+        id="password"
+      />
+      <button type="button" id="signin">signin</button>
+    </form>
+  </body>
+</html>

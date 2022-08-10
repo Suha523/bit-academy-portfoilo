@@ -30,4 +30,21 @@ class DataModel {
   updateCompany = () => {
     $.ajax();
   };
+  validate() {
+    let userName = $("#username").val();
+    let password = $("#password").val();
+    $.post(
+      "/login",
+      { userName: userName, password: password },
+      function (err, result) {
+        if (result) {
+          //   window.location.assign("admin.html");
+          console.log("hi from vvv");
+          window.location = "admin.html";
+        } else {
+          console.log(err);
+        }
+      }
+    );
+  }
 }

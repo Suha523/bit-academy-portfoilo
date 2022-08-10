@@ -1,5 +1,7 @@
 const dataModel = new DataModel();
 const renderer = new Renderer();
+let saveCompany = $("#save-comany");
+
 const saveComment = function () {
   const comment = $("#comment-input").val();
   console.log(comment);
@@ -14,7 +16,6 @@ $("#messageSubmit").on("click", function () {
   dataModel.saveMessage();
 });
 
-let saveCompany = $("#save-comany");
 saveCompany.on("click", function (e) {
   e.preventDefault();
   let companyName = $("#companyName").val();
@@ -25,4 +26,9 @@ saveCompany.on("click", function (e) {
     img: imageComapny,
     description: descriptionCompany,
   });
+});
+
+$("#signin").on("click", function () {
+  console.log("hi");
+  dataModel.validate();
 });
