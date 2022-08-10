@@ -43,6 +43,11 @@
               >show companies</a
             >
           </li>
+          <li>
+            <a href="#" id="show-copmaines" class="setting-item"
+              >show messages</a
+            >
+          </li>
         </ul>
       </aside>
       <form class="comanpy-form setting active-setting add-company" id="">
@@ -101,6 +106,17 @@
           </div>
           <h3>{{name}}</h3>
           <p>{{description}}</p>
+          <i class="fa-solid fa-pen-to-square"></i>
+          <i class="fa-solid fa-trash-can"></i>
+        </div>
+      {{/each}}
+    </script>
+    <script id="contactUS-template" type="text/x-handlebars-template">
+      {{#each contactus}}
+        <div class="contactus_container">
+          <p>{{name}}</p>
+          <p>{email}</p>
+          <p>{{message}}</p>
           <i class="fa-solid fa-pen-to-square"></i>
           <i class="fa-solid fa-trash-can"></i>
         </div>

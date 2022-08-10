@@ -1,15 +1,15 @@
 const renderer = new Renderer();
-const programManager = new ProgramManager();
-const dataModel = new DataModel()
 
-let saveCompany = $("#save-comany");
+const programManager = new ProgramManager();
+const dataModel = new DataModel();
+
+let saveCompany = $("#save-company");
 
 const saveComment = function () {
   const comment = $("#comment-input").val();
   console.log(comment);
   $.post("/comment", { coment: comment }, function (response) {});
 };
-
 $("#comment-subment").on("click", function () {
   dataModel.saveComment();
   $("#comment-input").val("");
@@ -49,7 +49,6 @@ saveCompany.on("click", function (e) {
   loadCompanies();
 });
 
-
 $("#signin").on("click", function () {
   console.log("hi");
   dataModel.validate();
@@ -77,7 +76,13 @@ const renderPrograms = function () {
   });
 };
 
-
-
 renderPrograms();
 
+const loadMessage = function () {
+  let companiesPromise = dataModel.getMessages();
+  companiesPromise.then(function (messages) {
+    renderer.renderContactus(messages);
+  });
+};
+
+loadMessage();
