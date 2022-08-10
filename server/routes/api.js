@@ -5,15 +5,15 @@ const Program = require("../models/Program");
 const Company = require("../models/Companies");
 const Comment = require("../models/Comments");
 const messages = require("../models/message");
+const admins = require("../models/admin");
 
-const moment = require('moment')
-const Application = require('../models/Application')
-
+const moment = require("moment");
+const Application = require("../models/Application");
 
 router.get("/program/:programName", (req, res) => {
   let programName = req.params.programName;
 
-  Program.findOne({'name': programName}, function (err, program) {
+  Program.findOne({ name: programName }, function (err, program) {
     res.send(program);
   });
 });
@@ -60,8 +60,6 @@ router.post("/saveProgram", (req, res) => {
   res.send(newProgram);
 });
 
-
-
 router.post("/comment", function (req, res) {
   // console.log(req.body.coment);
   const comment = req.body;
@@ -87,8 +85,6 @@ router.delete("/company/:companyName", (req, res) => {
     res.send(company);
   });
 });
-
-
 
 router.put("/updateProgram/:programId", function (req, res) {
   let programId = req.params.programId;
@@ -117,21 +113,39 @@ router.put("/updateProgram/:programId", function (req, res) {
   }
 });
 
-
 router.delete("/deleteProgram/:programId", function (req, res) {
   let programId = req.params.programId;
   Program.findByIdAndDelete(programId, function (err, program) {
     res.send(program);
   });
 });
-
-router.post('/saveApplication', function(req, res){
-  let application = req.body
-  let newApplication = new Application(application)
-  newApplication.save()
-  res.send(newApplication)
-})
-
-
+router.post("/login", function (req, res) {
+  // // req.bogy // [ user , pass] req.body .username //req.body .apss
+  // admins.findOne({user :user }) /// obj = { user:anas , passsword  : 123 }
+  let loginadmin = req.body;
+  let userName = loginadmin.userName;
+  let password = loginadmin.password;
+  //   console.log(loginadmin);
+  admins.findOne(
+    { userName: userName, password: password },
+    function (err, admin) {
+      if (err) {
+        console.log(err);
+        return res.status(500).send();
+      }
+      if (!admin) {
+        return res.status(404).send();
+      }
+      return res.status(200).send();
+    }
+  );
+});
+router.post("/register", function (req, res) {
+  let admin = req.body;
+  let newAdmin = new admins(admin);
+  console.log(admin);
+  newAdmin.save();
+  res.end();
+});
 
 module.exports = router;
