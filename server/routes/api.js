@@ -88,8 +88,6 @@ router.delete("/company/:companyName", (req, res) => {
   });
 });
 
-
-
 router.put("/updateProgram/:programId", function (req, res) {
   let programId = req.params.programId;
   let newProgram = req.body;
@@ -127,11 +125,34 @@ router.delete("/deleteProgram/:programId", function (req, res) {
 
 router.post('/saveApplication', function(req, res){
   let application = req.body
-  let newApplication = new Application(application)
-  newApplication.save()
-  res.send(newApplication)
+  Program.findById(application.program, function(err, program){
+    if(program.filters.length == 0 || program.filters[0].EnglishLevel === application.english_level || program.filters[1].gpa <= application.gpa){
+       application.isAccept = true
+    }
+    let newApplication = new Application(application)
+    newApplication.save()
+    res.send(newApplication)
+  })
+  
 })
 
+router.get('/applications', function(req, res){
+    Application.find({}).populate('program').exec(function(err, applications){
+        res.send(applications)
+    })
+})
 
+router.get('/getAccepted', function(req, res){
+   Application.find({isAccept: true}, function(err, applications){
+     console.log(applications);
+     res.end()
+   })
+})
+
+router.delete('/deleteApplication/:applicationId', function(req, res){
+  let applicationId = req.params.applicationId
+  console.log(applicationId);
+  // Application.findByIdAndDelete()
+})
 
 module.exports = router;

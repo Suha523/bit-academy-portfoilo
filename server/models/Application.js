@@ -10,7 +10,10 @@ const ApplicationSchema = new Schema({
     gpa: Number,
     program: {type: Schema.Types.ObjectId, ref: 'Program'},
     english_level: String,
+    isAccept: Boolean
 })
+
+
 
 
 
