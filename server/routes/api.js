@@ -26,15 +26,26 @@ router.get("/companies", (req, res) => {
 
 router.post("/company", (req, res) => {
   let company = req.body;
-  // console.log(company);
   let newCompany = new Company(company);
   console.log(newCompany);
-  // newCompany.save();
+  newCompany.save();
   res.send(newCompany);
 });
 router.put("/company/:companyName", (req, res) => {
   let companyName = req.params.companyName;
-  Company.findOneAndUpdate({ name: companyName }, {});
+  let updatedCompany = req.body;
+  Company.findOneAndUpdate(
+    { name: companyName },
+    {
+      name: updatedCompany.name,
+      img: updatedCompany.img,
+      description: updatedCompany.description,
+    },
+    { new: true },
+    function (err, updatedCompany) {
+      res.send(updatedCompany);
+    }
+  );
 });
 
 router.post("/saveProgram", (req, res) => {
