@@ -100,15 +100,20 @@ router.delete('/deleteProgram/:programName', function(req, res){
 })
 
 router.post("/comment", function (req, res) {
-  // console.log(req.body.coment);
    const comment = req.body;
-   //console.log(comment);
    const c = new Comment({
      comment :comment.coment
    });
    c.save();
    res.end();
  });
+
+ router.get("/comments", function (req, res) {
+  Comment.find({}, function (err, comments) {
+    console.log(comments)
+    res.send(comments);
+  }).sort().limit(2)
+}); 
 
 module.exports = router
 
