@@ -96,23 +96,7 @@ router.delete('/deleteProgram/:programName', function(req, res){
 })
 
 
-router.post('/saveApplication', function(req, res){
-    let application = req.body
-    let newApplication = new Application(application)
-    newApplication.save()
-    res.send(newApplication)
-})
 
-router.get('/getApplications', function(req, res){
-    Application.find({}, function(err, applications){
-       console.log(applications);
-        // for(let application of applications){
-        //     res.send(application);
-        //     console.log(application);
-        // }
-       
-    })
-})
 
 module.exports = router
 
