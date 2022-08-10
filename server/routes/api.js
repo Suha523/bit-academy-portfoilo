@@ -1,14 +1,14 @@
-
 const express = require("express");
 const router = express.Router();
 const moment = require('moment')
 const Program = require('../models/Program')
-const Company = require("../models/Companies");
+const Company = require("../models/Companies")
 
-router.get("/program/:programName", (req, res) => {
-  let programName = req.params.programName;
 
-  Program.findOne({ name: programName }, function (err, program) {
+router.get("/program/:programId", (req, res) => {
+  let programId = req.params.programId;
+
+  Program.findOne(programId, function (err, program) {
     res.send(program);
   });
 });
@@ -19,12 +19,6 @@ router.get("/get", (req, res) => {
   });
 });
 
-router.post("/save", (req, res) => {
-  let program = req.body;
-  let newProgram = new Program(program);
-  newProgram.save();
-  res.end();
-});
 
 router.get("/companies", (req, res) => {
   Company.find({}, function (err, companies) {
@@ -61,12 +55,12 @@ router.post('/saveProgram', (req, res) => {
     res.send(newProgram)  
 })
 
-router.put('/updateProgram/:programName', function(req, res){
-    let programName = req.params.programName
+router.put('/updateProgram/:programId', function(req, res){
+    let programId = req.params.programId
     let newProgram = req.body
     try{
-        Program.findOneAndUpdate(
-            {name: programName},
+        Program.findByIdAndUpdate(
+          programId,
             {
                 name: newProgram.name,
                 price: newProgram.price,
@@ -86,17 +80,15 @@ router.put('/updateProgram/:programName', function(req, res){
     catch(error){
         res.status(404).send({error: "the program does not exist"})
     }
-    
-   
 })
 
-router.delete('/deleteProgram/:programName', function(req, res){
-    let programName = req.params.programName
-    Program.findOneAndDelete({name: programName}, function(err, program){
+router.delete('/deleteProgram/:programId', function(req, res){
+    let programId = req.params.programId
+    Program.findByIdAndDelete(programId, function(err, program){
         res.send(program)
     })
-   
 })
+
 
 module.exports = router
 
