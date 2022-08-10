@@ -5,10 +5,10 @@ const Program = require("../models/Program");
 const Company = require("../models/Companies");
 const Comment = require("../models/Comments");
 
-router.get("/program/:programId", (req, res) => {
-  let programId = req.params.programId;
+router.get("/program/:programName", (req, res) => {
+  let programName = req.params.programName;
 
-  Program.findOne(programId, function (err, program) {
+  Program.findOne({'name': programName}, function (err, program) {
     res.send(program);
   });
 });
