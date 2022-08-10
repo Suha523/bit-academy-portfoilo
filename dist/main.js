@@ -1,5 +1,6 @@
-const dataModel = new DataModel();
 const renderer = new Renderer();
+const programManager = new ProgramManager()
+
 const saveComment = function () {
   const comment = $("#comment-input").val();
   console.log(comment);
@@ -26,3 +27,18 @@ saveCompany.on("click", function (e) {
     description: descriptionCompany,
   });
 });
+
+const renderPrograms = function(){
+  let programPromise = programManager.getAllPrograms()
+  programPromise.then(function(programs){
+     renderer.renderPrograms(programs)
+  })
+}
+
+
+$('#test').on('click', function(){
+  renderPrograms()
+})
+
+
+

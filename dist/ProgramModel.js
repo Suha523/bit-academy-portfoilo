@@ -56,14 +56,12 @@ class ProgramManager {
   }
 
   getAllPrograms() {
-    $.ajax({
+    return $.ajax({
       method: "get",
       url: "/programs",
       success: function (response) {
-        console.log(response);
       },
       error: function (error) {
-        console.log(error);
       },
     });
   }

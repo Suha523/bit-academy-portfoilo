@@ -19,6 +19,7 @@
   </head>
 
   <body>
+    <button id="test">click</button>
     <nav class="nav">
       <div class="logo">
         <img src="./images/logo.jpg" class="img-logo" />
@@ -33,12 +34,15 @@
         <li class="list-item"><a href="admin.html">login</a></li>
       </ul>
     </nav>
-
+    <div class="programs">
+        <h2>Our Open Training Programs</h2>
+        <div id="programsContainer"></div>
+    </div>
     <div id="main-comment">
       <textarea id="comment-input" placeholder="Enter your comment"></textarea>
       <button id="comment-subment">submet</button>
     </div>
-
+    
     <footer>
       <div class="footer_container">
         <p>contact us</p>
@@ -66,9 +70,27 @@
         <p>BIT-Academy &copy;2020 with allreservation</p>
       </div>
     </footer>
+
+    <script id="programs-visitors-template" type="text/x-handlebars-template">
+      {{#each programs}}
+        <div class="program-card">
+          <div class="program-img">
+            <img src="../dist/images/depositphotos_100579796-stock-photo-machine-code-languages.jpg">
+          </div>
+          <div class="program-info">
+            <h3>{{ name }}</h3>
+            <p>{{ price }}}</p>
+            <p>{{ deadlineSubmit }}</p>
+          </div>
+          <div class="programApply">
+             <button id="applyBtn">Apply</button>
+          </div> 
+        </div>
+      {{/each}}
+    </script>
+    
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
-    <script src="DataModel.js"></script>
     <script src="ProgramModel.js"></script>
     <script src="Renderer.js"></script>
     <script src="main.js"></script>

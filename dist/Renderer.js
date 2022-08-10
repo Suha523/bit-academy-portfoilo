@@ -1,8 +1,12 @@
 class Renderer {
-    renderData (data) {
-        let source = $("#data-template").html(); 
-        let template = Handlebars.compile(source)
-        let html = template({results: results})
-        $(".results").empty().append(html)
-    }
+
+  renderPrograms(programs) {
+    let programsContainer = $("#programsContainer");  
+    programsContainer.empty()
+    const source = $("#programs-visitors-template").html();  
+    let template = Handlebars.compile(source);
+    let programHtml = template({ "programs": programs });
+    programsContainer.append(programHtml);
+    
+  }
 }
