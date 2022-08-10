@@ -151,8 +151,9 @@ router.get('/getAccepted', function(req, res){
 
 router.delete('/deleteApplication/:applicationId', function(req, res){
   let applicationId = req.params.applicationId
-  console.log(applicationId);
-  // Application.findByIdAndDelete()
+  Application.findByIdAndDelete(applicationId, function(err, application){
+     res.send(application)
+  })
 })
 
 module.exports = router;
