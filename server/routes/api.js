@@ -104,10 +104,12 @@ router.post('/saveApplication', function(req, res){
 })
 
 router.get('/getApplications', function(req, res){
-    Application.find({}).populate('program').exec(function(err, applications){
-        for(let application of applications){
-            res.send(application);
-        }
+    Application.find({}, function(err, applications){
+       console.log(applications);
+        // for(let application of applications){
+        //     res.send(application);
+        //     console.log(application);
+        // }
        
     })
 })
