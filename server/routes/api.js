@@ -197,5 +197,22 @@ router.delete("/deleteProgram/:programId", function (req, res) {
   });
 });
 
-module.exports = router;
+router.post("/comment", function (req, res) {
+   const comment = req.body;
+   const c = new Comment({
+     comment :comment.coment
+   });
+   c.save();
+   res.end();
+ });
+
+ router.get("/comments", function (req, res) {
+  Comment.find({}, function (err, comments) {
+    console.log(comments)
+    res.send(comments);
+  }).sort().limit(2)
+}); 
+
+module.exports = router
+
 
