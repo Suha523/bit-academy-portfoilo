@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
+
 const Program = require("../models/Program");
 const Company = require("../models/Companies");
 const Comment = require("../models/Comments");
 const messages = require("../models/message");
+
+const moment = require('moment')
+const Application = require('../models/Application')
+
 
 router.get("/program/:programName", (req, res) => {
   let programName = req.params.programName;
@@ -55,39 +60,7 @@ router.post("/saveProgram", (req, res) => {
   res.send(newProgram);
 });
 
-router.put("/updateProgram/:programName", function (req, res) {
-  let programName = req.params.programName;
-  let newProgram = req.body;
-  try {
-    Program.findOneAndUpdate(
-      { name: programName },
-      {
-        name: newProgram.name,
-        price: newProgram.price,
-        deadlineSubmit: newProgram.deadlineSubmit,
-        startDate: newProgram.startDate,
-        endDate: newProgram.endDate,
-        description: newProgram.description,
-        filters: newProgram.filters,
-      },
-      {
-        new: true,
-      },
-      function (err, program) {
-        res.send(program);
-      }
-    );
-  } catch (error) {
-    res.status(404).send({ error: "the program does not exist" });
-  }
-});
 
-router.delete("/deleteProgram/:programName", function (req, res) {
-  let programName = req.params.programName;
-  Program.findOneAndDelete({ name: programName }, function (err, program) {
-    res.send(program);
-  });
-});
 
 router.post("/comment", function (req, res) {
   // console.log(req.body.coment);
@@ -115,12 +88,7 @@ router.delete("/company/:companyName", (req, res) => {
   });
 });
 
-router.post("/saveProgram", (req, res) => {
-  let program = req.body;
-  let newProgram = new Program(program);
-  newProgram.save();
-  res.send(newProgram);
-});
+
 
 router.put("/updateProgram/:programId", function (req, res) {
   let programId = req.params.programId;
@@ -149,13 +117,13 @@ router.put("/updateProgram/:programId", function (req, res) {
   }
 });
 
+
 router.delete("/deleteProgram/:programId", function (req, res) {
   let programId = req.params.programId;
   Program.findByIdAndDelete(programId, function (err, program) {
     res.send(program);
   });
 });
-
 
 
 module.exports = router;
