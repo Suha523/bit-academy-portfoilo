@@ -3,6 +3,7 @@ class DataModel {
     this.companies = [];
     this.comment = [];
     this.allComment = [];
+    this.merssages = [];
   }
 
   saveComment() {
@@ -58,6 +59,9 @@ class DataModel {
   getCompanies = () => {
     return $.get("/companies");
   };
+  getCompanies = () => {
+    return $.get("/companies");
+  };
   updateCompany = (companyName) => {
     $.ajax({
       url: "/company/:" + companyName,
@@ -93,4 +97,7 @@ class DataModel {
       }
     );
   }
+  getMessages = () => {
+    return $.get("/messages");
+  };
 }

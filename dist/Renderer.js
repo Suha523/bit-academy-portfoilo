@@ -1,5 +1,4 @@
 class Renderer {
-
   renderData(data) {
     let source = $("#data-template").html();
     let template = Handlebars.compile(source);
@@ -20,13 +19,19 @@ class Renderer {
     const newhtml = template({ companies });
     $(".companies-container").empty().append(newhtml);
   }
+
   renderProgramsUsers(programs) {
     let programsContainer = $("#programsContainer");
     programsContainer.empty();
     let source = $("#programs-visitors-template").html();
     let template = Handlebars.compile(source);
-    let programHtmlElem = template({programs});
+    let programHtmlElem = template({ programs });
     programsContainer.append(programHtmlElem);
-
+  }
+  renderContactus(messages) {
+    const source = $("#contactUS-template").html();
+    const template = Handlebars.compile(source);
+    const newhtml = template({ messages });
+    $(".contactus_container").empty().append(newhtml);
   }
 }
