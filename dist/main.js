@@ -27,5 +27,24 @@ saveCompany.on("click", function (e) {
     img: imageComapny,
     description: descriptionCompany,
   });
+  companyName = $("#companyName").val(" ");
+  imageComapny = $("#imageComapny").val(" ");
+  descriptionCompany = $("#descriptionCompany").val(" ");
+  loadCompanies();
 });
 updateCompany.on("click", function () {});
+//this section for admin settings
+$(".setting-item").on("click", function (e) {
+  e.preventDefault();
+  let targetId = $(this).attr("id");
+  $(".setting").removeClass("active-setting");
+  $(`.${targetId}`).addClass("active-setting");
+});
+
+function loadCompanies() {
+  let companiesPromise = dataModel.getCompanies();
+  companiesPromise.then(function (companies) {
+    renderer.renderCompany(companies);
+  });
+}
+loadCompanies();
