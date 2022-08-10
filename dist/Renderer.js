@@ -14,12 +14,11 @@ class Renderer {
     $("#display-comment").append(newHTML);
   }
 
-  
-//   renderCommentAdmin(comment) {
-//     $("#display-comment-admin").empty();
-//     const source = $("#comment-admin-template").html();
-//     const template = Handlebars.compile(source);
-//     let newHTML = template({ comment });
-//     $("#display-comment-admin").append(newHTML);
-//   }
+  //   renderCommentAdmin(comment) {
+  //     $("#display-comment-admin").empty();
+  //     const source = $("#comment-admin-template").html();
+  //     const template = Handlebars.compile(source);
+  //     let newHTML = template({ comment });
+  //     $("#display-comment-admin").append(newHTML);
+  //   }
 }

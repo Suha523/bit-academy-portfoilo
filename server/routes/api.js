@@ -5,10 +5,10 @@ const Program = require("../models/Program");
 const Company = require("../models/Companies");
 const Comment = require("../models/Comments");
 const messages = require("../models/message");
+const admins = require("../models/admin");
 
-const moment = require('moment')
-const Application = require('../models/Application')
-
+const moment = require("moment");
+const Application = require("../models/Application");
 
 router.get("/program/:programName", (req, res) => {
   let programName = req.params.programName;
@@ -59,8 +59,6 @@ router.post("/saveProgram", (req, res) => {
   newProgram.save();
   res.send(newProgram);
 });
-
-
 
 router.post("/comment", function (req, res) {
   const comment = req.body;
@@ -146,7 +144,6 @@ router.post("/saveProgram", (req, res) => {
   res.send(newProgram);
 });
 
-
 router.put("/updateProgram/:programId", function (req, res) {
   let programId = req.params.programId;
   let newProgram = req.body;
@@ -173,7 +170,6 @@ router.put("/updateProgram/:programId", function (req, res) {
     res.status(404).send({ error: "the program does not exist" });
   }
 });
-
 
 router.delete("/deleteProgram/:programId", function (req, res) {
   let programId = req.params.programId;
@@ -209,6 +205,34 @@ router.post('/saveApplication', function(req, res){
   res.send(newApplication)
 })
 
+router.post("/login", function (req, res) {
+  // // req.bogy // [ user , pass] req.body .username //req.body .apss
+  // admins.findOne({user :user }) /// obj = { user:anas , passsword  : 123 }
+  let loginadmin = req.body;
+  let userName = loginadmin.userName;
+  let password = loginadmin.password;
+  //   console.log(loginadmin);
+  admins.findOne(
+    { userName: userName, password: password },
+    function (err, admin) {
+      if (err) {
+        console.log(err);
+        return res.status(500).send();
+      }
+      if (!admin) {
+        return res.status(404).send();
+      }
+      return res.status(200).send();
+    }
+  );
+});
+router.post("/register", function (req, res) {
+  let admin = req.body;
+  let newAdmin = new admins(admin);
+  console.log(admin);
+  newAdmin.save();
+  res.end();
+});
 
 
 module.exports = router;
