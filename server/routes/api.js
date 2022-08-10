@@ -25,6 +25,7 @@ router.get("/programs", (req, res) => {
 });
 router.get("/companies", (req, res) => {
   Company.find({}, function (err, companies) {
+    if (companies === null) companies = [];
     res.send(companies);
   });
 });
@@ -32,7 +33,6 @@ router.get("/companies", (req, res) => {
 router.post("/company", (req, res) => {
   let company = req.body;
   let newCompany = new Company(company);
-  console.log(newCompany);
   newCompany.save();
   res.send(newCompany);
 });

@@ -1,71 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-    <link
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>WhetherWeather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
     href="https://fonts.googleapis.com/css?family=Montserrat"
     rel="stylesheet"
-    />
-    <link
+  />
+  <link
     rel="stylesheet"
     href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
     integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
     crossorigin="anonymous"
   />
-    <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <form class="comanpy-form">
-        <h2 class="subtitile-companyform">Add New Company !</h2>
-       <div>
-            <label for="companyName">company Name </label>
-            <input type="text" id="companyName" />
-       </div>
-       <div>
-            <label for="imageComapny">Image Link </label>
-            <input type="text" id="imageComapny" />
+    <nav class="nav">
+        <div class="logo">
+          <img src="./images/logo.jpg" class="img-logo" />
         </div>
-        <div>
-            <label for="descriptionCompany">description</label>
-            <textarea type="text" id="descriptionCompany" ></textarea>
-        </div>
-        <button id="save-company" >Save</button>
-    </form>
-    <div class="companies-container">
-        <div class="company-container">
-            <div class="company-img-container">
-                <img src="./images/logo.jpg" alt="">
+        <ul class="list-container">
+          <li class="list-item"><a href="index.html">home</a></li>
+          <li class="list-item">arbutus</li>
+          <li class="list-item">programs</li>
+          <li class="list-item"><a href="contactus.html">contact us</a></li>
+          <li class="list-item">what the other says</li>
+          <li class="list-item">login</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <aside class="admin-aside">
+            <ul class="settings-container">
+                <li><a href="#" id="add-company" class="setting-item">company Form </a></li>
+                <li><a href="#" id="show-copmaines" class="setting-item">show companies</a></li>
+            </ul>
+        </aside>
+        <form class="comanpy-form setting active-setting add-company" id="">
+            <h2 class="subtitile-companyform">Add New Company !</h2>
+           <div>
+                <label for="companyName">company Name </label>
+                <input type="text" id="companyName" />
+           </div>
+           <div>
+                <label for="imageComapny">Image Link </label>
+                <input type="text" id="imageComapny" />
             </div>
-            <h3>sub title</h3>
-            <p>this is description</p>
-        </div>
-        <div class="company-container">
-            <div class="company-img-container">
-                <img src="./images/logo.jpg" alt="">
-            </div>
-            <h3>sub title</h3>
-            <p>this is description</p>
-        </div>
-        <div class="company-container">
-            <div class="company-img-container">
-                <img src="./images/logo.jpg" alt="">
-            </div>
-            <h3>sub title</h3>
-            <p>this is description</p>
             <div>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <i class="fa-solid fa-trash-can"></i>
+                <label for="descriptionCompany">description</label>
+                <textarea type="text" id="descriptionCompany" ></textarea>
             </div>
-        </div>
-        <div class="company-container">
-            <div class="company-img-container">
-                <img src="./images/logo.jpg" alt="">
+            <button id="save-company" >Save</button>
+        </form>
+        <div class="companies-viewer setting show-copmaines" id="">
+            <h2 class="subtitile-companyform">We Work With </h2>
+            <div class="companies-container">
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <div>
         <button id=""
         <div id="display-comment-admin"></div>
@@ -76,6 +72,47 @@
         {{comment}}
       </div>
       {{/each}}
+=======
+    <footer>
+        <div class="footer_container">
+          <p>contact us</p>
+        </div>
+        <ul class="socials">
+          <li>
+            <a href="https://www.facebook.com/BIT-Academy-106240388641294"
+              ><i class="fab fa-facebook"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-google-plus"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </li>
+        </ul>
+        <div class="footerbtm">
+          <p>BIT-Academy &copy;2020 with allreservation</p>
+        </div>
+    </footer>
+    <script id="company-template" type="text/x-handlebars-template">
+      {{#each companies}}
+         <div class="company-container">
+            <div class="company-img-container">
+                <img src="./images/logo.jpg" alt="{{img}}">
+            </div>
+            <h3>{{name}}</h3>
+            <p>{{description}}</p>
+            <i class="fa-solid fa-pen-to-square"></i>
+            <i class="fa-solid fa-trash-can"></i>
+          </div> 
+       {{/each}}
+>>>>>>> admin-aside
     </script>
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
