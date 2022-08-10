@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: url(https://www.mexatk.com/wp-content/uploads/2015/08/%D9%86%D8%AC%D9%88%D9%85-HD-2.jpg);
+  background-size: cover;
+}
+.box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: aquamarine;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  padding: 50px;
+}
+.box h1 {
+  color: darkorchid;
+  text-transform: uppercase;
+  font-weight: 700px;
+}
+.box input {
+  width: 270px;
+  border-color: blueviolet;
+  border-radius: 16px;
+  transition: 0.25px;
+  text-align: center;
+  padding: 5px 3px;
+  width: 220px;
+  outline: none;
+  margin: auto;
+  color: black;
+  margin: 10px auto;
+}
+#message {
+  padding: 5px 3px;
+  margin: 20px auto;
+  width: 270px;
+  border-color: blueviolet;
+  border-radius: 16px;
+  text-align: center;
+  transition: 0.25px;
+  outline: none;
+}
+#messageSubmit {
+  border: 3px solid beige;
+  padding: 10px 10px;
+  /* margin: 10px auto; */
+  border-radius: 24px;
+  transition: 0.25px;
+  width: 120px;
+  background-color: blueviolet;
+}

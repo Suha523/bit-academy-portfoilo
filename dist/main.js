@@ -25,6 +25,9 @@ window.onload = function () {
 
 $("#messageSubmit").on("click", function () {
   dataModel.saveMessage();
+  $("#nameinput").empty();
+  $("#email").empty();
+  $("#message").empty();
 });
 
 let updateCompany = $("update-company");
