@@ -103,13 +103,6 @@ router.delete("/deleteProgram/:programId", function (req, res) {
   });
 });
 
-router.post("/saveProgram", (req, res) => {
-  let program = req.body;
-  let newProgram = new Program(program);
-  newProgram.save();
-  res.send(newProgram);
-});
-
 router.put("/updateProgram/:programId", function (req, res) {
   let programId = req.params.programId;
   let newProgram = req.body;
@@ -137,12 +130,6 @@ router.put("/updateProgram/:programId", function (req, res) {
   }
 });
 
-router.delete("/deleteProgram/:programId", function (req, res) {
-  let programId = req.params.programId;
-  Program.findByIdAndDelete(programId, function (err, program) {
-    res.send(program);
-  });
-});
 
 router.post("/comment", function (req, res) {
   const comment = req.body;
