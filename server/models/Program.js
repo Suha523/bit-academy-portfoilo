@@ -8,12 +8,7 @@ const ProgramSchema = new Schema({
     startDate: Date,
     endDate: Date,
     description: String,
-    filters: {
-        type: Array,
-        trim: true,
-        required: true,
-        maxlength: 3200
-    }
+    filters: Array
 })
 
 const Program = mongoose.model("Program", ProgramSchema)

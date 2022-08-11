@@ -34,19 +34,6 @@ const renderPrograms = function () {
     renderer.renderProgramsUsers(programs);
   });
 };
+
 renderPrograms();
-$("#test").on("click", function () {
-  let program = {
-    name: "backend",
-    price: 100,
-    deadlineSubmit: new Date('2022-08-22'),
-    startDate: new Date('2022-09-22'),
-    endDate: new Date('2022-11-22'),
-    description: "this is a fullstack training program",
-    filters: [{EnglishLevel: "Intermediat"}]
-  }
-   let programPromise = programManager.addProgram(program)
-   programPromise.then(function(){
-      renderPrograms()
-   })
-});
+
