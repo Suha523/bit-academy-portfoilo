@@ -59,9 +59,7 @@ class DataModel {
   getCompanies = () => {
     return $.get("/companies");
   };
-  getCompanies = () => {
-    return $.get("/companies");
-  };
+
   updateCompany = (companyName) => {
     $.ajax({
       url: "/company/:" + companyName,
