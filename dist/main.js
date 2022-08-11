@@ -78,19 +78,21 @@ const renderPrograms = function () {
 };
 
 $('#save-program').on('click', function(){
+  let filters = []
   const nameInput = $('#program-name')
   const priceInput = $('#price')
   const deadlineDateInput = $('#deadlineDate')
   const startDateInput = $('#startDate')
   const endDateInput = $('#endDate')
-  const descriptionTextarea = $('#description')
-  
+  // const descriptionTextarea = $('#description')
+  let filterOption = $("input[name='english-level']:checked");
+  filters.push({EnglishLevel: filterOption.val()})
   let name = nameInput.val()
   let price = priceInput.val()
   let deadlineDate = deadlineDateInput.val()
   let startDate = startDateInput.val()
   let endDate = endDateInput.val()
-  // let description = descriptionTextarea().html()
+  // let description = descriptionTextarea().val()
 
   let program = {
     name: name,
@@ -99,6 +101,7 @@ $('#save-program').on('click', function(){
     startDate: startDate,
     endDate: endDate,
     // description: description,
+    filters: filters
   }
   let programPromise = programManager.addProgram(program)
   programPromise.then(function(program){

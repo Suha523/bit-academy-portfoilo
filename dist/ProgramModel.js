@@ -5,7 +5,15 @@ class ProgramManager {
     return $.ajax({
       method: "post",
       url: "/saveProgram",
-      data: program,
+      data: {
+        name: program.name,
+        price: program.price,
+        deadlineSubmit: program.deadlineSubmit,
+        startDate: program.startDate,
+        endDate: program.endDate,
+        description: program.description,
+        filters: JSON.stringify(program.filters),
+      },
       success: (response) => {},
       error: function (error) {
         console.log(error);
