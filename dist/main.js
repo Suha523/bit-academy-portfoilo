@@ -1,5 +1,7 @@
 const renderer = new Renderer();
 const programManager = new ProgramManager();
+const dataModel = new DataModel()
+
 let saveCompany = $("#save-comany");
 
 const saveComment = function () {
