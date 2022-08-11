@@ -1,12 +1,11 @@
 class Renderer {
-
-  renderPrograms(programs) {
-    let programsContainer = $("#programsContainer");  
-    programsContainer.empty()
-    const source = $("#programs-visitors-template").html();  
+  constructor() {}
+  renderProgramsUsers(programs) {
+    let programsContainer = $("#programsContainer");
+    programsContainer.empty();
+    let source = $("#programs-visitors-template").html();
     let template = Handlebars.compile(source);
-    let programHtml = template({ "programs": programs });
-    programsContainer.append(programHtml);
-    
+    let programHtmlElem = template({programs});
+    programsContainer.append(programHtmlElem);
   }
 }

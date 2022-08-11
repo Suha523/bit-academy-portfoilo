@@ -1,5 +1,5 @@
 const renderer = new Renderer();
-const programManager = new ProgramManager()
+const programManager = new ProgramManager();
 
 const saveComment = function () {
   const comment = $("#comment-input").val();
@@ -28,17 +28,25 @@ saveCompany.on("click", function (e) {
   });
 });
 
-const renderPrograms = function(){
-  let programPromise = programManager.getAllPrograms()
-  programPromise.then(function(programs){
-     renderer.renderPrograms(programs)
-  })
-}
-
-
-$('#test').on('click', function(){
-  renderPrograms()
-})
-
-
-
+const renderPrograms = function () {
+  let programPromise = programManager.getAllPrograms();
+  programPromise.then(function (programs) {
+    renderer.renderProgramsUsers(programs);
+  });
+};
+renderPrograms();
+$("#test").on("click", function () {
+  let program = {
+    name: "backend",
+    price: 100,
+    deadlineSubmit: new Date('2022-08-22'),
+    startDate: new Date('2022-09-22'),
+    endDate: new Date('2022-11-22'),
+    description: "this is a fullstack training program",
+    filters: [{EnglishLevel: "Intermediat"}]
+  }
+   let programPromise = programManager.addProgram(program)
+   programPromise.then(function(){
+      renderPrograms()
+   })
+});
