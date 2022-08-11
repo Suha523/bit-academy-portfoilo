@@ -77,7 +77,34 @@ const renderPrograms = function () {
   });
 };
 
+$('#save-program').on('click', function(){
+  const nameInput = $('#program-name')
+  const priceInput = $('#price')
+  const deadlineDateInput = $('#deadlineDate')
+  const startDateInput = $('#startDate')
+  const endDateInput = $('#endDate')
+  const descriptionTextarea = $('#description')
+  
+  let name = nameInput.val()
+  let price = priceInput.val()
+  let deadlineDate = deadlineDateInput.val()
+  let startDate = startDateInput.val()
+  let endDate = endDateInput.val()
+  // let description = descriptionTextarea().html()
 
+  let program = {
+    name: name,
+    price: price,
+    deadlineDate: deadlineDate,
+    startDate: startDate,
+    endDate: endDate,
+    // description: description,
+  }
+  let programPromise = programManager.addProgram(program)
+  programPromise.then(function(program){
+     renderPrograms()
+  })
+})
 
 renderPrograms();
 

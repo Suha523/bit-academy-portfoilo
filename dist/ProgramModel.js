@@ -6,8 +6,7 @@ class ProgramManager {
       method: "post",
       url: "/saveProgram",
       data: program,
-      success: (response) => {
-      },
+      success: (response) => {},
       error: function (error) {
         console.log(error);
       },
@@ -58,9 +57,26 @@ class ProgramManager {
     return $.ajax({
       method: "get",
       url: "/programs",
-      success: function (response) {
+      success: function (response) {},
+      error: function (error) {},
+    });
+  }
+
+  addProgramTest() {
+    return $.ajax({
+      method: "post",
+      url: "/saveProgram",
+      data: {
+        name: "finalTest",
+        price: 100,
+        deadlineSubmit: "2022-07-22",
+        startDate: "2022-08-22",
+        endDate: "2022-10-22",
+        description: "this is a android training program",
+        filters: JSON.stringify([{ EnglishLevel: "Advance" }, { gpa: 60 }]),
       },
-      error: function (error) {
+      success: (res) => {
+        console.log(res);
       },
     });
   }
