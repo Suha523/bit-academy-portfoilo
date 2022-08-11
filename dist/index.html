@@ -33,7 +33,11 @@
         <li class="list-item"><a href="login.html">login</a></li>
       </ul>
     </nav>
-
+    <div class="programs">
+      <h2>Our Open Training Programs</h2>
+      <div id="programsContainer">
+      </div>
+    </div>
     <div id="main-comment">
       <textarea id="comment-input" placeholder="Enter your comment"></textarea>
       <button id="comment-subment">Add comments</button>
@@ -68,6 +72,7 @@
       </div>
     </footer>
 
+<<<<<<< HEAD
     <script type="text/x-handlebars-template" id="comment-template">
       {{#each comment}}
         <div>
@@ -76,8 +81,29 @@
       {{/each}}
     </script>
     <script src="./jquery/dist/jquery.js"></script>
+=======
+    <script id="programs-visitors-template" type="text/x-handlebars-template">
+      {{#each programs}}
+         <div class="program-card">
+          <div class="program-img">
+            <img src="../dist//images/depositphotos_100579796-stock-photo-machine-code-languages.jpg">
+          </div>
+          <div class="program-info">
+             <h2>{{name}}</h2>
+             <h3>{{price}}</h3>
+             <p>{{deadlineSubmit}}</p>
+          </div>
+          <div class="apply">
+             <button>Apply</button>
+          </div>
+        
+         </div>
+      {{/each}}
+    </script>
+   
+>>>>>>> add-render-visitors
     <script src="./handlebars/dist/handlebars.js"></script>
-    <script src="DataModel.js"></script>
+    <script src="./jquery/dist/jquery.js"></script>
     <script src="ProgramModel.js"></script>
     <script src="Renderer.js"></script>
     <script src="main.js"></script>
