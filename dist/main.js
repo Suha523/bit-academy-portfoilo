@@ -2,7 +2,7 @@ const renderer = new Renderer();
 const programManager = new ProgramManager();
 const dataModel = new DataModel()
 
-let saveCompany = $("#save-comany");
+let saveCompany = $("#save-company");
 
 const saveComment = function () {
   const comment = $("#comment-input").val();
@@ -21,7 +21,7 @@ const loadComent = function () {
   });
 };
 
-loadComent();
+// loadComent();
 
 $("#messageSubmit").on("click", function () {
   dataModel.saveMessage();
