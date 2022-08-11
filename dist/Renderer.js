@@ -13,12 +13,10 @@ class Renderer {
     let newHTML = template({ comment });
     $("#display-comment").append(newHTML);
   }
-
-  //   renderCommentAdmin(comment) {
-  //     $("#display-comment-admin").empty();
-  //     const source = $("#comment-admin-template").html();
-  //     const template = Handlebars.compile(source);
-  //     let newHTML = template({ comment });
-  //     $("#display-comment-admin").append(newHTML);
-  //   }
+  renderCompany(companies) {
+    const source = $("#company-template").html();
+    const template = Handlebars.compile(source);
+    const newhtml = template({ companies });
+    $(".companies-container").empty().append(newhtml);
+  }
 }

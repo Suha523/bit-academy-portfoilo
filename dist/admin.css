@@ -1,9 +1,34 @@
-.comanpy-form{
-    width: 98%;
-    margin: auto;
+.container{
+    display: grid;
+    grid-template-columns: 20% 77%;
+    margin: 50px 0;
+}
+.setting{
+    display: none;
+    width: 40%;
+}
+.active-setting{
+    display: block;
+}
+.settings-container{
+    border: 1px solid gold;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.setting-item{
+    display: block;
+    text-decoration: none;
+    color:black;
     padding: 10px;
-    overflow: hidden;
+    text-align: center;
+    border: 1px solid pink;
+}
+.comanpy-form{
+    width: 100%;
+    margin: 0 0 0 1%;
     border: 1px solid red;
+    padding: 10px;
 }
 .subtitile-companyform{
     text-align: center;
@@ -29,15 +54,14 @@ label{
     padding: 10px;
     width: 20%
 }
+.companies-viewer{
+    width: 104%;
+    border: 1px solid yellow;
+}
 .companies-container{
-    margin: 100px 0;
     text-align: center;
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    justify-content: space-between;
-    justify-content: space-evenly;
-    border: 1px solid green;
-    padding: 10px;
 }
 .company-container{
     margin:40px;

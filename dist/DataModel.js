@@ -56,9 +56,7 @@ class DataModel {
     });
   };
   getCompanies = () => {
-    $.get("/companies", function (companies) {
-      this.companies = companiess;
-    });
+    return $.get("/companies");
   };
   updateCompany = (companyName) => {
     $.ajax({

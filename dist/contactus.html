@@ -16,6 +16,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="contactus.css"
+    />
   </head>
   <body>
     <nav class="nav">
@@ -24,14 +30,29 @@
       </div>
       <ul class="list-container">
         <li class="list-item"><a href="index.html">home</a></li>
-        <li class="list-item">arbutus</li>
+        <li class="list-item">aboutus</li>
         <li class="list-item">programs</li>
         <li class="list-item"><a href="contactus.html">contact us</a></li>
         <li class="list-item">what the other says</li>
-        <li class="list-item">login</li>
+        <li class="list-item"><a href="login.html">login</a></li>
       </ul>
     </nav>
-    <div class="about-us">my name is bitAcademy</div>
+    <div class="box">
+      <h1>Contact us</h1>
+      <label>
+        name:<input id="nameinput" type="text" name="clientname" required
+      /></label>
+      <br />
+      <label
+        >email:<input id="email" type="email" name="clientemail" required
+      /></label>
+      <br />
+      <label
+        >message:<br /><textarea name="comment" id="message"></textarea>
+      </label>
+      <br />
+      <button id="messageSubmit">submit</button>
+    </div>
     <footer>
       <div class="footer_container">
         <p>contact us</p>
@@ -59,22 +80,7 @@
         <p>BIT-Academy &copy;2020 with allreservation</p>
       </div>
     </footer>
-    <div>
-      <h1>Contact us</h1>
-      <label>
-        name:<input id="nameinput" type="text" name="clientname" required
-      /></label>
-      <br />
-      <label
-        >email:<input id="email" type="text" name="clientemail" required
-      /></label>
-      <br />
-      <label
-        >message:<br /><textarea name="comment" id="message"></textarea>
-      </label>
-      <br />
-      <button id="messageSubmit">submit</button>
-    </div>
+
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="DataModel.js"></script>
