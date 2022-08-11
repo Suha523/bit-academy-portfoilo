@@ -70,22 +70,5 @@ class ProgramManager {
     });
   }
 
-  addProgramTest() {
-    return $.ajax({
-      method: "post",
-      url: "/saveProgram",
-      data: {
-        name: "finalTest",
-        price: 100,
-        deadlineSubmit: "2022-07-22",
-        startDate: "2022-08-22",
-        endDate: "2022-10-22",
-        description: "this is a android training program",
-        filters: JSON.stringify([{ EnglishLevel: "Advance" }, { gpa: 60 }]),
-      },
-      success: (res) => {
-        console.log(res);
-      },
-    });
-  }
+  
 }
