@@ -101,3 +101,11 @@ footer {
 #programsContainer{
    background-color: #AACA59;
 }
+
+.program-card{
+   display: flex;
+}
+
+.program-img{
+  
+}
