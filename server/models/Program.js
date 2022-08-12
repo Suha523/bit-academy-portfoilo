@@ -3,10 +3,12 @@ const Schema = mongoose.Schema
 
 const ProgramSchema = new Schema({
     name: String,
-    img: String,
     price: Number,
-    isOpen: Boolean,
-    description: String
+    deadlineSubmit: Date,
+    startDate: Date,
+    endDate: Date,
+    description: String,
+    filters: Array
 })
 
 const Program = mongoose.model("Program", ProgramSchema)

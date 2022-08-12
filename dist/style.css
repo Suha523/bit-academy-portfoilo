@@ -1,34 +1,128 @@
 :root {
-    --mainColor:#74B8B8;
-    --secondColor:#AACA59;
-  }
-.nav{
-    display: flex; 
-    justify-content: space-between;
-    background-color: var(--mainColor);
-    color: white;
-    height: 100px;
+  --mainColor: #74b8b8;
+  --secondColor: #aaca59;
 }
-ul{
-    list-style: none;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--mainColor);
+  color: white;
+  height: 100px;
 }
-.logo .img-logo{
-    height: 100%;
-    width: 70px;
+ul {
+  list-style: none;
 }
-.list-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.logo .img-logo {
+  height: 100%;
+  width: 70px;
 }
-.list-item{
-    display: inline-block;
-    text-transform: capitalize;
-    margin: 10px;
-    cursor: pointer;
-    padding: 5px;
-    font-size: 18px;
+.list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.list-item:hover{
-    background-color: var(--secondColor);
+.list-item {
+  display: inline-block;
+  text-transform: capitalize;
+  margin: 10px;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 18px;
+}
+.list-item:hover {
+  background-color: var(--secondColor);
+}
+/* afnan edit css */
+footer {
+  background: grey;
+  height: auto;
+  width: 100%;
+  padding-top: 20px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+.footercontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.footercontainer h3 {
+  font-size: 1.8rem;
+  font-weight: 400px;
+  text-transform: capitalize;
+  line-height: 3rem;
+}
+.footercontainer p {
+  max-width: 500px;
+  margin: 10px auto;
+  font-size: 14px;
+}
+.socials {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+.socials li {
+  margin: 0 10px;
+}
+.socials a {
+  text-decoration: none;
+  color: slateblue;
+}
+.socials a i {
+  font-size: 3.1rem;
+  transition: color 0.4s;
+}
+.socials a:hover i {
+  color: lightseagreen;
+}
+.footerbtm {
+  background: grey;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+}
+.footerbtm p {
+  font-size: 20px;
+  word-spacing: 2px;
+  text-transform: capitalize;
+  text-align: center;
+}
+.footerbtm span {
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+#programsContainer{
+   background-color: #AACA59;
+}
+
+.program-card{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+}
+
+.program-img{
+  width: 20%;
+  height: 100%;
+  padding: 10px;
+}
+
+.program-info{
+  width: 60%;
+  height: 100%;
+  padding: 10px;
+}
+
+.apply{
+  width: 20%;
+  height: 33%;
+  padding: 10px;
 }
