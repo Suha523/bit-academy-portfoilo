@@ -76,3 +76,23 @@ label{
     height: 100%;
     border: 1px solid red;
 }
+
+.input-group{
+   
+}
+
+.programForm{
+   padding: 20px;
+   border: 1px solid gold;
+}
+
+.input-group input, textarea{
+    width: 98%;
+    padding: 8px;
+    display: block;
+    margin: auto;
+}
+
+.english-level-options{
+    display: flex;
+}

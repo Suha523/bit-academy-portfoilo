@@ -54,11 +54,21 @@ router.put("/company/:companyName", (req, res) => {
 });
 
 router.post("/saveProgram", (req, res) => {
-  let program = req.body;
+  let program = {
+    ...req.body,
+    filters: JSON.parse(req.body.filters),
+    deadlineSubmit: getMomentDate(req.body.deadlineSubmit),
+    startDate: getMomentDate(req.body.startDate),
+    endDate: getMomentDate(req.body.endDate),
+  };
   let newProgram = new Program(program);
   newProgram.save();
   res.send(newProgram);
 });
+
+function getMomentDate(date) {
+  return moment(date).format("YYYY-MM-DD");
+}
 
 router.post("/comment", function (req, res) {
   const comment = req.body;
@@ -95,7 +105,6 @@ router.delete("/company/:companyName", (req, res) => {
   });
 });
 
-
 router.delete("/deleteProgram/:programId", function (req, res) {
   let programId = req.params.programId;
   Program.findByIdAndDelete(programId, function (err, program) {
@@ -129,7 +138,6 @@ router.put("/updateProgram/:programId", function (req, res) {
     res.status(404).send({ error: "the program does not exist" });
   }
 });
-
 
 router.post("/comment", function (req, res) {
   const comment = req.body;
